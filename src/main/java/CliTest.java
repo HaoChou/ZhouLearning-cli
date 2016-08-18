@@ -11,7 +11,8 @@ import org.apache.commons.cli.CommandLine;
 public class CliTest {
 
     public static void main(String[] args) {
-        System.out.println(args.toString());
+        //java classNama -c ccc -t ttt 是会生成个数为4的数组 两辆一对 所以创建如下的数组
+        String[] argsTest=new String[]{"-c","ccc","-t","ttt"};
         Options options=new Options();
         options.addOption("t",false,"display current time");
         options.addOption("c", true, "country code");
@@ -19,7 +20,7 @@ public class CliTest {
         CommandLineParser parser =new DefaultParser();
         CommandLine commandLine=null;
         try {
-            commandLine=parser.parse(options,args);
+            commandLine=parser.parse(options,argsTest);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -29,7 +30,7 @@ public class CliTest {
         }
         if(commandLine.hasOption("t")){
             String currentTime=commandLine.getOptionValue("t");
-            System.out.println(currentTime);
+            System.out.println(currentTime);//输出为null
         }
     }
 
